@@ -12,32 +12,8 @@ class Client(models.Model):
 
 	def __str__(self):
 		return self.NomClient
-
-
-class Marchandise(models.Model):
-
-	CATEGORY = (
-		('women','Women'),
-		('men','Men'),
-		('kid','Kid'),
-
-		)
-	CodeMarch = models.CharField(max_length = 250)
-	NomMarch =models.CharField(max_length = 250)
-	Designation = models.TextField()
-	Quantity = models.CharField(max_length = 250)
-	PrixUnitaire = models.CharField(max_length = 250)
-
-class Magasinier(models.Model):
-	CodeMag = models.CharField(max_length = 250)
-	NomMag  = models.CharField(max_length = 250)
-	NumTelMaga = models.CharField(max_length = 250)
-
-	def __str__(self):
-		return self.NomMag
-
+		
 class Fournisseur(models.Model):
-
 	CodeFourni = models.CharField(max_length = 250)
 	NomFourni  = models.CharField(max_length = 250)
 	PostNomFourni  = models.CharField(max_length = 250)
@@ -49,13 +25,53 @@ class Fournisseur(models.Model):
 	def __str__(self):
 		return self.NomFourni
 
+class Magasinier(models.Model):
+	CodeMag = models.CharField(max_length = 250)
+	NomMag  = models.CharField(max_length = 250)
+	NumTelMaga = models.CharField(max_length = 250)
+
+	def __str__(self):
+		return self.NomMag
+
+
+class Marchandise(models.Model):
+
+	CATEGORY = (
+		('women','Women'),
+		('men','Men'),
+		('kid','Kid'),
+
+		)
+	imageMarch = models.FileField(upload_to = 'marchandise')
+	CodeMarch = models.CharField(max_length = 250)
+	NomMarch =models.CharField(max_length = 250)
+	Designation = models.TextField()
+	Quantity = models.CharField(max_length = 250)
+	PrixUnitaire = models.CharField(max_length = 250)
+	fournisseur = models.ForeignKey(Fournisseur, null = True, on_delete = models.SET_NULL)
+	Magasinier = models.ForeignKey(Magasinier, null = True, on_delete = models.SET_NULL)
+
+	def __str__(self):
+		return self.NomMarch
+
+
+class product_details(models.Model):
+	marchimg = models.ForeignKey(Marchandise, on_delete=models.CASCADE)
+
+
+
+
+
+
+
 class Email(models.Model):
-	client = models.ForeignKey(Client, null = True, on_delete = models.SET_NULL)
+	Addmail = models.EmailField()
+	Client = models.CharField(max_length = 250)
 	sujet = models.CharField(max_length = 250)
 	description = models.TextField()
 
 	def __str__(self):
-		return self.client.NomClient
+		return self.Client
 
 
 
