@@ -2,8 +2,17 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
 <div class="container">
+  {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}} ">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
       <div class="row justify-content-center">
+
         <div class="col-8">
           <legend class="border-botton mb-4">Log In</legend>
 
@@ -16,6 +25,8 @@
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Login</button>
+                 &nbsp;  &nbsp;&nbsp;&nbsp; <a href="/">Home</a>
+
             </div>
         </form>
       
