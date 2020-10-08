@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from . models import Marchandise
 from . models import product_details
 from . models import Email
 from . forms import ContactModelForm
-
+from chrisadvert.settings import EMAIL_HOST_USER
+from django.core.mail import send_mail, EmailMessage
+from django.core.files.storage import FileSystemStorage
 from django.template.loader import get_template
 
 
@@ -44,4 +47,28 @@ def order(request):
 	}
 	return render(request, 'order.html',context)
 
+def contact(request):
+	return render(request, 'contact.html')
+
+
+def SendPlainEmail(request):
+	pass
+
+	
+
+def send_mail_plain_with_stored_file(request):
+	pass
+
+def send_mail_plain_with_file(request):
+    message = request.POST.get('message', '')
+    subject = request.POST.get('subject', '')
+    mail_id = request.POST.get('email', '')
+    email = EmailMessage(subject, message, EMAIL_HOST_USER, [mail_id])
+    email.content_subtype = 'html'
+
+    file = request.FILES['file']
+    email.attach(file.name, file.read(), file.content_type)
+
+    email.send()
+    return HttpResponse("Your Mail have been Sent")
 
