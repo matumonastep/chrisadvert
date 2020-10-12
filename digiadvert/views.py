@@ -63,7 +63,9 @@ def send_mail_plain_with_file(request):
     message = request.POST.get('message', '')
     subject = request.POST.get('subject', '')
     mail_id = request.POST.get('email', '')
-    email = EmailMessage(subject, message, EMAIL_HOST_USER, [mail_id])
+    mail_id2 = request.POST.get('from_mail', '')
+
+    email = EmailMessage(subject,message,EMAIL_HOST_USER,[mail_id2],[mail_id])
     email.content_subtype = 'html'
 
     file = request.FILES['file']

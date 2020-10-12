@@ -48,9 +48,15 @@ margin-top:10px;
                 {% csrf_token %}
                 <div class="form-group">
                     <label class="control-label">
-                        Email :
+                        From :
                     </label>
-                    <input type="text" name="email" class="form-control">
+                    <input type="text" name="from_mail" class="form-control"  >
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        To :
+                    </label>
+                    <input type="text" name="email" class="form-control" value = "matumoastephano@gmail.com">
                 </div>
                 <div class="form-group">
                     <label class="control-label">
@@ -72,7 +78,8 @@ margin-top:10px;
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Send Mail With File</button>
+                <button type="submit" class="btn btn-success">Send Mail With File</button>
+                    <a href="/" class="btn btn-primary" style="float: right">Return Home</a>
                 </div>
             </form>
 
