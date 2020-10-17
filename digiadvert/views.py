@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . models import Marchandise
 from . models import product_details
-from . models import Email
 from . forms import ContactModelForm
 from chrisadvert.settings import EMAIL_HOST_USER
 from django.core.mail import send_mail, EmailMessage
