@@ -17,6 +17,7 @@ border:1px solid dodgerblue;
 }
 .block-area{
 margin-top:30px
+margin-right:5px;
 }
 .form-area{
 border:1px solid dodgerblue;
@@ -32,6 +33,7 @@ margin-bottom:10px;
 border:1px solid dodgerblue;
 padding:20px;
 margin-top:10px;
+margin-right: 15%;
 }
 
 </style>
@@ -43,7 +45,8 @@ margin-top:10px;
     <br>
     <br>
     <div  class="row">
-        <div class="col-lg-8 block-border">
+
+        <div class="col-lg-4 block-border">
             <form action="/send_mail_plain_with_file" method="post" enctype="multipart/form-data" >
                 {% csrf_token %}
                 <div class="form-group">
@@ -82,10 +85,48 @@ margin-top:10px;
                     <a href="/" class="btn btn-primary" style="float: right">Return Home</a>
                 </div>
             </form>
+        </div>
 
+        <div class="col-lg-4 block-border">
+            <form action="/send_mail_plain_with_file" method="post" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label">
+                        Refernece Client:
+                    </label>
+                    <br>
+                    <select style="width: 100%; height: 30px;" >
+                        <option>Matabaro</option>
+                        <option>Lenine</option>
+                        <option>Gaspard</option>
+                        <option>Buffalo</option>
+                        <option>Mbaku</option>
+                        <option>Kambwa</option>
+                        <option>Lionel</option>
+                        <option>Amzat</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                    Num Tel:
+                    </label>
+                    <input type="text" name="subject" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">
+                        Message :
+                    </label>
+                    <textarea name="message" class="form-control" rows="5"></textarea>
+                </div>
+                
+                <div class="form-group">
+                <button type="submit" class="btn btn-success">Send SMS</button>
+                    <a href="/" class="btn btn-primary" style="float: right">Return Home</a>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+
 {% endblock bodydata %}
 
 {% block custom_js %}

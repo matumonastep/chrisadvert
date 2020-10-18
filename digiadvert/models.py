@@ -46,8 +46,8 @@ class Contact(models.Model):
 	def save(self, *args, **kwargs):
 
 		if self.TelPhone > 1:
-			account_sid = 'AC11b29ee73b0bc8a6b4d2b8e5159f4180'
-			auth_token = 'b6dc9c8fed141e8a11ae62baa1a6ba7b'
+			account_sid = ''
+			auth_token = ''
 			client = Client(account_sid, auth_token)
 
 			message = client.messages.create(
